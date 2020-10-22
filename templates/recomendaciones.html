@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Recomendaciones{% endblock %}
+
+{% block content %}
+  
+
+  <div class="contenedor"> 
+    <div id="img_cont">
+      <h1> {{ campeon }} </h1>
+      <img id="img_campeon" src={{url_for('static', filename = "img/" + campeon + ".jpg")}}>
+    </div>
+
+    <div id="stat_cont">
+      <h1 id="base_stats">Estadísticas base</h1>
+      {% for stat in stats%}
+        <div class="stat">
+          <p class="stat_nombre"> {{ stat[0] }} </p>
+          <p class="stat_valor"> {{ stat[1] }} </p>
+        </div>
+      {%endfor%}
+    </div>
+  </div>
+
+  <h3>Similares a {{ campeon }}</h3>
+
+  <div class="contenedor">
+      {% for item in recomendaciones %}
+      <div class="item">
+        <a href={{ url_for('link_me', campeon = item[1]) }}>
+        <img class="item_img" src={{url_for('static', filename = "img/" + item[1] + ".jpg")}}>
+        </a>
+        <p class="item_nombre">{{ item[1] }}</p>
+        <p class="item_sim">{{ item[0] }}{{ "%" }}</p>
+      </div>
+      {% endfor %}
+  </div>
+
+  <h3>Elige otro campeón</h3>
+  <div class="contenedor-flex">
+    <form action="" method="post" novalidate>
+      {{ form.hidden_tag() }}
+      {{ form.choose_champ }} 
+      <span style="color: red; border:none">{{ error }}</span>
+      {{ form.submit() }}
+    </form>
+  </div>
+
+{% endblock %}

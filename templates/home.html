@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Recomendador de Champions{% endblock %}
+
+{% block content %}
+  <div class="contenedor">
+    <img id="img_logo" src={{url_for('static', filename = "lol_logo.png")}}>
+  </div>
+  <br>
+  <h3>Elige un campeón</h3>
+  <div class="contenedor-flex">
+        <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        {{ form.choose_champ }} 
+        <span style="color: red;">{{ error }}</span>
+        {{ form.submit() }}
+        </form>
+  </div>
+
+{% endblock %}
