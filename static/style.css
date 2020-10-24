@@ -10,10 +10,24 @@ body {
     background: #fff;
 }
 
+a { color: #b466e9; }
+
 p {
     text-align: center;
     margin: auto;
 }
+
+h1, h3 {
+    color: #6b4188; 
+    margin: 0;
+    padding: 0 0 10px 0;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
 
 img {
     border-radius: 5px;
@@ -21,93 +35,85 @@ img {
     margin: auto;
 }
 
-div {
-    margin: 0px 3px 5px 0px;
-    border-radius: 5px;
-}
-
-form {
-    background-color: #fff;
-    margin:auto;
-}
+form { flex: 0 1 100%; }
 
 label, select, input {
     border:none;
     margin:auto;
-    font-size: 1.05em;
-    margin-left: 5px;
-    margin-bottom: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    /*font-size: 16px;*/
+    font-size: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
-
 
 select {
     background: #eee;
-    padding-left: 10px;
+    padding-left: 1em;
+    padding-left: 2em;
     padding-right: 25px;
 }
 
-select:hover {
-    background: #ececec;
-}
+select:hover { background: #ececec; }
 
 input[type=submit], input[type=button] {
     color:white;
     background-color: #412852;
-    padding-left: 45px;
-    padding-right: 45px;
+    padding-left: 1.1em;
+    padding-right: 1.1em;
 }
 
 input[type=submit]:hover, input[type=button]:hover {
     background-color: #6b4188;
 }
 
-h1,h3 {
-    color: #6b4188; 
-    margin: 25px 0px 15px 0px;
+#logo {
+    flex: 0 1 50%;
 }
-
-h3 {
-    text-align: center;
-    font-size: 24px;
-    font-size: bold;
-}
-
-li {
-    margin: auto;
-    line-height: 30px;
-}
-
-a { color: #b466e9; }
-
-hr { 
-    border: none; 
-    border-top: 1px solid lightgray; 
-}
-
 .contenedor {
+    display:flex;
+    flex-flow:row wrap;
+    justify-content: center;
+    align-items:flex-start;
     padding: 0px;
-    min-width: 100%;
-    max-width: 100%;
-    /*display:flex;*/
+    margin: 0px;
 }
 
-.contenedor-flex {
-    padding: 0px;
-    min-width: 100%;
-    max-width: 100%;
+.cont_titulo {
+    flex: 0 1 100%;
+    text-align: center;
+}
+
+#campeon_cont {
+    flex: 0 1 19%;
+    justify-content: center;
+    padding-top: 3%;
+}
+
+#campeon_nombre {
+    text-align: center;
+    padding: 0;
+}
+
+#campeon_img {
+    max-width:100%;
+}
+
+#stat_cont {
     display:flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    flex: 0 1 80%;
+}
+
+#stat_titulo {
+    flex: 0 1 100%;
+    text-align: center;
+    padding-top: 3%;
 }
 
 .stat {
-    min-width: 15%;
-    max-width: 20%;
-    margin-left: 0px;
-    padding: 3px;
-    display:inline-block;
-    background-color:#fff;
+    flex: 0 1 15%;
+    padding-bottom: 8px;
+
 }
 
 .stat_nombre {
@@ -115,57 +121,24 @@ hr {
 }
 
 .item {
+    flex: 0 1 15%;
     margin-left: 0px;
-    min-width: 8%;
-    max-width: 12%;
-    padding: 5px;
-    display:inline-block;
-    vertical-align: top;
-    background-color:#fff;
+    padding: 0px 5px 15px 5px;
+}
+
+.item_nombre {
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .item_img {
     max-width: 100%;
 }
 
-.item_nombre {
-    font-size: 18;
-    margin-top: 5px;
-    font-weight: 500;
-}
-
 .item_sim {
     font-size: 14px;;
     font-weight: 300;
     color: #888
-}
-
-#img_cont {
-    display:inline-block;
-    max-width: 16%;
-}
-
-#img_campeon {
-    max-width:100%;
-}
-
-#img_logo {
-    display:block;
-    max-width: 50%;
-}
-
-#stat_cont {
-    display: inline-block;
-    vertical-align: top;
-    max-width:77%;
-}
-
-#campeon_elegido {
-    width: 173px;
-}
-
-#base_stats {
-    text-align: center;
 }
 
 

@@ -2,18 +2,20 @@
 {% block title %}Recomendador de Champions{% endblock %}
 
 {% block content %}
+
   <div class="contenedor">
-    <img id="img_logo" src={{url_for('static', filename = "lol_logo.png")}}>
+    <img id="logo" src={{url_for('static', filename = "lol_logo.png")}}>
   </div>
-  <br>
-  <h3>Elige un campeón</h3>
-  <div class="contenedor-flex">
-        <form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
-        {{ form.choose_champ }} 
-        <span style="color: red;">{{ error }}</span>
-        {{ form.submit() }}
-        </form>
+  <div class="contenedor">
+    <h3 class="cont_titulo">Elige un campeón</h3>
+    <div>
+      <form action="" method="post" novalidate>
+      {{ form.hidden_tag() }}
+      {{ form.choose_champ }} 
+      <span style="color: red;">{{ error }}</span>
+      {{ form.submit() }}
+      </form>
+    </div>
   </div>
 
 {% endblock %}

@@ -20,7 +20,7 @@ def link_me(campeon):
     if form.validate_on_submit():
         campeon = form.choose_champ.data
         return redirect(url_for("link_me", campeon=campeon))
-    recomendaciones = rec.recoms(campeon)
+    recomendaciones = rec.recoms(campeon, cuantos=12)
     
     stats = rec.get_stats(campeon)
     return render_template(
@@ -28,6 +28,7 @@ def link_me(campeon):
         campeon=campeon,
         recomendaciones=recomendaciones,
         stats=stats,
+        get_role=rec.get_role,
         form=form
     )
 
