@@ -3,13 +3,13 @@ import numpy as np
 
 
 champ = pd.read_csv("champions.csv")
-champ = champ[~champ.Champions.isin(["Mega Gnar", "Kled & Skaarl"])]
 
 champ_names = list(champ["Champions"])
-champ_stats = champ.drop(columns="Champions")
+stat_names  = list(champ.columns[2:20])
+
+champ_stats = champ.drop(columns=["Champions", "Primary"])
 champ_stats = np.array(champ_stats)
 
-stat_names = list(champ.columns[1:])
 
 def coseno(ele_a, ele_b):
     dot = np.dot(ele_a, ele_b)
@@ -27,9 +27,16 @@ def recoms(nombre, cuantos=14, matriz=champ_stats, nombres=champ_names):
     recs = sorted(recs, reverse = True)
     return(recs[1:cuantos+1])
 
+
 def get_stats(nombre, tabla=champ, nombres=stat_names):
-    renglon = tabla.loc[tabla["Champions"] == nombre, tabla.columns[1:]]
+    renglon = tabla.loc[tabla["Champions"] == nombre, stat_names]
     valores = renglon.values.flatten().tolist()
     valores = [int(i) for i in valores]
     stats = list(tuple(zip(stat_names, valores)))
     return stats
+
+
+def get_role(nombre, tabla=champ):
+    rol = tabla.loc[tabla["Champions"] == nombre, "Primary"]
+    rol = str(rol.values[0])
+    return rol
