@@ -31,8 +31,13 @@ def recoms(nombre, cuantos=14, matriz=champ_stats, nombres=champ_names):
 def get_stats(nombre, tabla=champ, nombres=stat_names):
     renglon = tabla.loc[tabla["Champions"] == nombre, stat_names]
     valores = renglon.values.flatten().tolist()
-    valores = [int(i) for i in valores]
-    stats = list(tuple(zip(stat_names, valores)))
+    ajustados = []
+    for i in valores:
+        if i.is_integer():
+            ajustados.append(int(i))
+        else:
+            ajustados.append(np.round(i, 3))
+    stats = list(tuple(zip(stat_names, ajustados)))
     return stats
 
 

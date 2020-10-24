@@ -64,4 +64,4 @@ champions = pd.concat([
     role_dummies
     ], axis=1)
 
-champions.to_csv("champions.csv")
+champions.to_csv("champions.csv", index=False)
