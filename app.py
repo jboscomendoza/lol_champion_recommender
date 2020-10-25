@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '7283hjbdscfzc78sdm3l3s8sbh23bds890fasdfz21p'
 
 
-LISTA_CHAMPS = rec.champ_names
+LISTA_CHAMPS = rec.CHAMP_NAMES
 
 
 @app.route("/recomendaciones/<string:campeon>/", methods=("GET", "POST"))
