@@ -10,13 +10,20 @@ def crear_sopa(url):
     sopa = BeautifulSoup(resp.text, "lxml")
     return(sopa)
 
-
 def crear_tabla(rows):
     data = []
     for row in rows:
         cols = row.find_all("td")
-        cols = [ele.text.strip() for ele in cols]
-        elements = [ele for ele in cols]
+        new_cols = []
+        for elem in cols:
+            if elem.text.strip():
+                new_cols.append(elem.text.strip())
+            else: 
+                if elem.img:
+                    new_cols.append("OP")
+                else:
+                    new_cols.append(" ")
+        elements = [ele for ele in new_cols if ele]
         if len(elements) > 0:
             data.append(elements)
     return(data)
@@ -66,6 +73,16 @@ riot_colnames = [
     "Champions", "Primary", "Secondary", "Damage", "Toughness", "Control", "Mobility", "Utility", "Style", "DamageType", "Difficulty"
 ]
 
+# Lane preferida
+lane_url = "https://leagueoflegends.fandom.com/wiki/List_of_champions/Position"
+lane_class = "article-table sortable"
+lane_df = crear_df(lane_url, lane_class)
+lane_colnames = [
+    "Champions", "Top", "Jungle", "Mid", "Bottom", "Support", "Unplayed"
+]
+lane_roles = ["Top", "Jungle", "Mid", "Bottom", "Support"]
+
+
 ### Procesar data
 base_df = base_df[~base_df.Champions.isin(["Mega Gnar", "Kled & Skaarl"])]
 base_df = base_df.reset_index(drop=True)
@@ -79,13 +96,19 @@ riot_dummies = pd.get_dummies(
     prefix=["Rol", "DType"]
 )
 
+lane_df.columns = lane_colnames
+lane_df = lane_df.drop("Unplayed", axis=1)
+lane_df = lane_df.replace(["OP", " "], [1, 0])
+
 role_dummies = pd.get_dummies(role_df["Primary"], prefix="Rol")
 
+# Exportar
 champions = pd.concat([
     riot_df[["Champions", "Primary"]],
     base_df[base_stats],
     riot_df[riot_stats],
-    riot_dummies
+    riot_dummies,
+    lane_df[lane_roles]
     ], axis = 1)
 
 champions.to_csv("champions.csv", index=False)
