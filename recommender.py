@@ -2,13 +2,17 @@ import pandas as pd
 import numpy as np
 
 
-champ = pd.read_csv("champions.csv")
+CHAMP = pd.read_csv("champions.csv")
 
-champ_names = list(champ["Champions"])
-stat_names  = list(champ.columns[2:20])
+CHAMP_NAMES = list(CHAMP["Champions"])
+STAT_NAMES  = [
+    "HP", "HP+", "HP5", "HP5+", "MP", "MP+", "MP5", "MP5+", "AD", "AD+", 
+    "AS", "AS+", "AR", "AR+", "MR", "MR+", "MS", "Range"
+]
 
-champ_stats = champ.drop(columns=["Champions", "Primary"])
-champ_stats = np.array(champ_stats)
+CHAMP_STATS = CHAMP.drop(columns=["Champions", "Primary"])
+CHAMP_ARRAY = (CHAMP_STATS-CHAMP_STATS.min())/(CHAMP_STATS.max()-CHAMP_STATS.min())
+CHAMP_ARRAY= np.array(CHAMP_ARRAY)
 
 
 def coseno(ele_a, ele_b):
@@ -19,17 +23,17 @@ def coseno(ele_a, ele_b):
     return(float(cos))
 
 
-def recoms(nombre, cuantos=14, matriz=champ_stats, nombres=champ_names):
-    posicion = champ_names.index(nombre)
-    resultados = [coseno(i, champ_stats[posicion]) for i in matriz]
+def recoms(nombre, cuantos=14, matriz=CHAMP_ARRAY, nombres=CHAMP_NAMES):
+    posicion = nombres.index(nombre)
+    resultados = [coseno(i, matriz[posicion]) for i in matriz]
     resultados = [np.round(i*100, 2) for i in resultados]
     recs = list(tuple(zip(resultados, nombres)))
     recs = sorted(recs, reverse = True)
     return(recs[1:cuantos+1])
 
 
-def get_stats(nombre, tabla=champ, nombres=stat_names):
-    renglon = tabla.loc[tabla["Champions"] == nombre, stat_names]
+def get_stats(nombre, tabla=CHAMP, nombres=STAT_NAMES):
+    renglon = tabla.loc[tabla["Champions"] == nombre, STAT_NAMES]
     valores = renglon.values.flatten().tolist()
     ajustados = []
     for i in valores:
@@ -37,11 +41,11 @@ def get_stats(nombre, tabla=champ, nombres=stat_names):
             ajustados.append(int(i))
         else:
             ajustados.append(np.round(i, 3))
-    stats = list(tuple(zip(stat_names, ajustados)))
+    stats = list(tuple(zip(nombres, ajustados)))
     return stats
 
 
-def get_role(nombre, tabla=champ):
+def get_role(nombre, tabla=CHAMP):
     rol = tabla.loc[tabla["Champions"] == nombre, "Primary"]
     rol = str(rol.values[0])
     return rol
