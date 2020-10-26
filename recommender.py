@@ -14,6 +14,16 @@ CHAMP_STATS = CHAMP.drop(columns=["Champions", "Primary"])
 CHAMP_ARRAY = (CHAMP_STATS-CHAMP_STATS.min())/(CHAMP_STATS.max()-CHAMP_STATS.min())
 CHAMP_ARRAY= np.array(CHAMP_ARRAY)
 
+CUSTOM_NAMES = [
+    'Damage', 'Toughness', 'Control', 'Mobility', 'Utility',
+    'Difficulty', 'Rol_Artillery', 'Rol_Assassin', 'Rol_Battlemage',
+    'Rol_Burst', 'Rol_Catcher', 'Rol_Diver', 'Rol_Enchanter',
+    'Rol_Juggernaut', 'Rol_Marksman', 'Rol_Skirmisher', 'Rol_Specialist',
+    'Rol_Vanguard', 'Rol_Warden', 'DType_Magic', 'DType_Physical', 'Top',
+    'Jungle', 'Mid', 'Bottom', 'Support'
+]
+CUSTOM_STATS = np.array(CHAMP[CUSTOM_NAMES])
+
 
 def coseno(ele_a, ele_b):
     dot = np.dot(ele_a, ele_b)
@@ -23,9 +33,12 @@ def coseno(ele_a, ele_b):
     return(float(cos))
 
 
-def recoms(nombre, cuantos=14, matriz=CHAMP_ARRAY, nombres=CHAMP_NAMES):
-    posicion = nombres.index(nombre)
-    resultados = [coseno(i, matriz[posicion]) for i in matriz]
+def recoms(nombre, entrada=None, cuantos=14, matriz=CHAMP_ARRAY, matriz_custom =CUSTOM_STATS, nombres=CHAMP_NAMES):
+    if nombre == "Custom":
+        resultados = [coseno(i, entrada) for i in matriz_custom]
+    else:
+        posicion = nombres.index(nombre)
+        resultados = [coseno(i, matriz[posicion]) for i in matriz]
     resultados = [np.round(i*100, 2) for i in resultados]
     recs = list(tuple(zip(resultados, nombres)))
     recs = sorted(recs, reverse = True)
@@ -49,3 +62,13 @@ def get_role(nombre, tabla=CHAMP):
     rol = tabla.loc[tabla["Champions"] == nombre, "Primary"]
     rol = str(rol.values[0])
     return rol
+
+
+def crear_custom(entrada):
+    entrada = list(entrada.values())
+    custom = [0 for i in range(26)]
+    for i in entrada[0:3]:
+        custom[CUSTOM_NAMES.index(i)] = 1
+    custom[0:6] = entrada[3:]
+    custom = [float(i) for i in custom] 
+    return custom

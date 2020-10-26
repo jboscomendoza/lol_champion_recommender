@@ -40,7 +40,16 @@ def link_me(campeon):
 def mostrar_custom():
     # str a dict
     stat = eval(request.args["stat"])
-    return(render_template("custom.html", stat=stat ))
+    custom = rec.crear_custom(stat)
+    recomendaciones = rec.recoms("Custom", custom, cuantos=12)
+
+    return render_template(
+        "custom.html", 
+        stat=stat,
+        campeon="Custom",
+        recomendaciones=recomendaciones,
+        get_role=rec.get_role,
+    )
 
 
 @app.route("/", methods=("GET", "POST"))
