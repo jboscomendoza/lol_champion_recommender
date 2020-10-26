@@ -6,16 +6,23 @@
   <div class="contenedor">
     <img id="logo" src={{url_for('static', filename = "lol_logo.png")}}>
   </div>
+
   <div class="contenedor">
     <h3 class="cont_titulo">Elige un campeón</h3>
     <div>
       <form action="" method="post" novalidate>
-      {{ form.hidden_tag() }}
+      {{ form.hidden_tag() }} 
       {{ form.choose_champ }} 
       <span style="color: red;">{{ error }}</span>
       {{ form.submit() }}
       </form>
     </div>
   </div>
+
+  <div class="contenedor">
+    <h1> - O - </h1>
+  </div>
+
+  {% include "stat_form.html" %}
 
 {% endblock %}
