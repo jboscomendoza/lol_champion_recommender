@@ -1,0 +1,38 @@
+<div class="contenedor">
+  <h3 class="cont_titulo">Elige una combinación de atributos</h3>
+  
+  <form id="forma_cont", action="" method="post" novalidate>
+    {{ form.hidden_tag() }} 
+    <div class="forma_stats">
+      {{ form_stat.role.label }}
+      {{ form_stat.role }}
+      {{ form_stat.lane.label }}
+      {{ form_stat.lane }}
+    </div>
+
+    <div class="forma_stats">
+      {{ form_stat.dmge.label }}
+      {{ form_stat.dmge }}
+      {{ form_stat.tghn.label }}
+      {{ form_stat.tghn }}
+      {{ form_stat.ctrl.label }}
+      {{ form_stat.ctrl }}
+    </div>
+
+    <div class="forma_stats">
+      {{ form_stat.mobl.label }}
+      {{ form_stat.mobl }} <br>
+      {{ form_stat.util.label }}
+      {{ form_stat.util }} <br>
+      {{ form_stat.diff.label }}
+      {{ form_stat.diff }}
+    </div>
+
+    <div>
+      <span style="color: red;">{{ error }}</span>
+      {{ form_stat.submit_stat() }}
+    </div>
+
+  </form>
+
+</div>

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Recomendacion Custom{% endblock %}
+
+{% block content %}
+
+<div class="contenedor">
+  <h1 class="cont_titulo"> Stats </h1>
+
+  {% for k, v in stat.items() %}
+    <div class="item">
+      {{k}}: {{v}}
+    </div>
+  {% endfor %}
+
+{% endblock %}

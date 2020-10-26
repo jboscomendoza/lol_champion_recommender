@@ -20,6 +20,7 @@ def link_me(campeon):
 
     if form.validate_on_submit():
         campeon = form.choose_champ.data
+        
         return redirect(url_for("link_me", campeon=campeon))
     recomendaciones = rec.recoms(campeon, cuantos=12)
     
@@ -35,16 +36,28 @@ def link_me(campeon):
     )
 
 
+@app.route("/custom/", methods=("GET", "POST"))
+def mostrar_custom():
+    # str a dict
+    stat = eval(request.args["stat"])
+    return(render_template("custom.html", stat=stat ))
+
+
 @app.route("/", methods=("GET", "POST"))
 @app.route("/home/", methods=("GET", "POST"))
 def mostrar_forma():
     form = ChooseForm()
     form_stat = StatForm()
 
-    if form.validate_on_submit():
+    if form.validate_on_submit() and form.submit:
         campeon = form.choose_champ.data
         return redirect(url_for("link_me", campeon=campeon))
-    
+    elif form_stat.validate_on_submit() and form_stat.submit_stat:
+        stat = request.form.to_dict()
+        for i in ["csrf_token", "submit_stat"]:
+            stat.pop(i)
+        return redirect(url_for("mostrar_custom", stat=stat))
+
     return render_template("home.html", form = form, form_stat=form_stat)
 
 

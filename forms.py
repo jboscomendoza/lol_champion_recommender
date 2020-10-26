@@ -13,18 +13,16 @@ ROL_CHOICES = [
 
 
 class ChooseForm(FlaskForm):
-    choose_champ = SelectField(u"Campeón: ", validators=[DataRequired()],
-    choices=CHAMP_NAMES)
+    choose_champ = SelectField(u"Campeón", choices=CHAMP_NAMES)
     submit = SubmitField("Mostrar recomendaciones")
 
 class StatForm(FlaskForm):
-    rol = SelectField(u"Rol", choices=ROL_CHOICES)
+    role = SelectField(u"Rol", choices=ROL_CHOICES)
     lane = SelectField(u"Lane", choices=LANE_CHOICES)
-    damage = SelectField(u"Damage", choices=NUM_CHOICES)
-    toughness = SelectField(u"Toughness", choices=NUM_CHOICES)
-    control = SelectField(u"Control", choices=NUM_CHOICES)
-    mobility = SelectField(u"Mobility", choices=NUM_CHOICES)
-    utility = SelectField(u"Utility", choices=NUM_CHOICES)
-    difficulty = SelectField(u"Difficulty", choices=NUM_CHOICES)
-    
-    submit = SubmitField("Mostrar recomendaciones")
+    dmge = SelectField(u"Damage", choices=NUM_CHOICES)
+    tghn = SelectField(u"Toughness", choices=NUM_CHOICES)
+    ctrl = SelectField(u"Control", choices=NUM_CHOICES)
+    mobl = SelectField(u"Mobility", choices=NUM_CHOICES)
+    util = SelectField(u"Utility", choices=NUM_CHOICES)
+    diff = SelectField(u"Difficulty", choices=NUM_CHOICES)
+    submit_stat = SubmitField("Mostrar recomendaciones")
