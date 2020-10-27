@@ -1,0 +1,13 @@
+<div class="contenedor">
+  <h3 class="cont_titulo">Similares a {{ campeon }}</h3>
+  {% for item in recomendaciones %}
+    <div class="item">
+      <a href={{ url_for('link_me', campeon = item[1]) }}>
+      <img class="item_img" src={{url_for('static', filename = "img/" + item[1] + ".jpg")}}>
+      </a>
+      <p class="item_nombre">{{ item[1] }}</p>
+      <p class="item_sim">{{ get_role(item[1]) }}</p>
+      <p class="item_sim">{{ item[0] }}{{ "%" }}</p>
+    </div>
+  {% endfor %}
+</div>

@@ -4,29 +4,27 @@
 
 {% block content %}
 
-<div class="contenedor">
-  <h1 class="cont_titulo"> Stats </h1>
-  {% for k, v in stat.items() %}
-    <div class="stat">
-      <p class="stat_nombre">{{k.capitalize() }}</p>
-      <p class?"stat_valor">{{v}}</p>
+  <div class="contenedor">
+    <div id="campeon_cont">
+      <img id="campeon_img" src={{url_for('static', filename = "img/Custom.jpg")}}>
     </div>
-  {% endfor %} 
-</div>
 
-<div class="contenedor">
-<h3 class="cont_titulo">Similares a {{ campeon }}</h3>
-    {% for item in recomendaciones %}
-    <div class="item">
-        <a href={{ url_for('link_me', campeon = item[1]) }}>
-        <img class="item_img" src={{url_for('static', filename = "img/" + item[1] + ".jpg")}}>
-        </a>
-        <p class="item_nombre">{{ item[1] }}</p>
-        <p class="item_sim">{{ get_role(item[1]) }}</p>
-        <p class="item_sim">{{ item[0] }}{{ "%" }}</p>
+    <div id="stat_cont">
+      <h1 class="cont_titulo">Atributos seleccionados</h1>
+      {% for k, v in stat.items() %}
+        <div class="stat">
+          <p class="stat_nombre">{{k.capitalize() }}</p>
+          <p class?"stat_valor">{{v}}</p>
+        </div>
+      {% endfor %} 
     </div>
-    {% endfor %}
-</div>
+  </div>
 
+<hr>
+{% include "campeones_similares.html" %}
+<hr>
+{% include "form_stat.html" %}
+<hr>
+{% include "form_choose.html" %}
 
 {% endblock %}

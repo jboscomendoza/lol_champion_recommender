@@ -33,13 +33,18 @@ def link_me(campeon):
     form = ChooseForm()
     form_stat = StatForm()
 
-    if form.validate_on_submit():
+    if form.validate_on_submit() and form.submit:
         campeon = form.choose_champ.data
-        
         return redirect(url_for("link_me", campeon=campeon))
-    recomendaciones = rec.recoms(campeon, cuantos=12)
+    elif form_stat.validate_on_submit() and form_stat.submit_stat:
+        stat = request.form.to_dict()
+        for i in ["csrf_token", "submit_stat"]:
+            stat.pop(i)
+        return redirect(url_for("mostrar_custom", stat=stat))
     
+    recomendaciones = rec.recoms(campeon, cuantos=12)
     stats = rec.get_stats(campeon)
+
     return render_template(
         "recomendaciones.html",
         campeon=campeon,
@@ -53,17 +58,32 @@ def link_me(campeon):
 
 @app.route("/custom/", methods=("GET", "POST"))
 def mostrar_custom():
+    form = ChooseForm()
+    form_stat = StatForm()
+    
+    if form.validate_on_submit() and form.submit:
+        campeon = form.choose_champ.data
+        return redirect(url_for("link_me", campeon=campeon))
+    elif form_stat.validate_on_submit() and form_stat.submit_stat:
+        stat = request.form.to_dict()
+        for i in ["csrf_token", "submit_stat"]:
+            stat.pop(i)
+        return redirect(url_for("mostrar_custom", stat=stat))
+    
     # str a dict
     stat = eval(request.args["stat"])
     custom = rec.crear_custom(stat)
     recomendaciones = rec.recoms("Custom", custom, cuantos=12)
     stat = limpia_stat(stat)
+
     return render_template(
         "custom.html", 
         stat=stat,
-        campeon="Custom",
+        campeon=u"tu selección",
         recomendaciones=recomendaciones,
         get_role=rec.get_role,
+        form=form,
+        form_stat=form_stat
     )
 
 

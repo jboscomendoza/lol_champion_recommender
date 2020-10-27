@@ -6,7 +6,7 @@ from recommender import CHAMP_NAMES
 
 NUM_CHOICES = [(1.0, "Bajo"), (2.0, "Medio"), (3.0, "Alto")]
 LANE_CHOICES = ["Top", "Mid", "Bottom", "Jungle", "Support"]
-DTYPE_CHOICES = [("DType_Magic", "Magic"), ("DType_Physical", "Physical")]
+DTYPE_CHOICES = [("DType_Physical", "Physical"), ("DType_Magic", "Magic")]
 ROL_CHOICES = [
     ("Rol_Artillery", "Artillery"), 
     ("Rol_Assassin", "Assassin"), 
@@ -29,7 +29,7 @@ class ChooseForm(FlaskForm):
     submit = SubmitField("Mostrar recomendaciones")
 
 class StatForm(FlaskForm):
-    rol = SelectField(u"Rol", choices=ROL_CHOICES)
+    rol = SelectField(u"Rol", choices=ROL_CHOICES, default="Juggernaut")
     linea = SelectField(u"Lane", choices=LANE_CHOICES)
     tipo = SelectField(u"Damage Type", choices=DTYPE_CHOICES)
     damage = SelectField(u"Damage", choices=NUM_CHOICES, default=2.0)

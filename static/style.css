@@ -64,6 +64,11 @@ input[type=submit]:hover, input[type=button]:hover {
     background-color: #6b4188;
 }
 
+
+hr {
+    border-top: 1px solid #eee;
+  }
+
 #logo {
     flex: 0 1 50%;
 }
