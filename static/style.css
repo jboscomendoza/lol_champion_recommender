@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
 html {
-    font-family: Ubuntu, sans-serif; 
+    /*font-family: Ubuntu, sans-serif; */
+    font-family: "Nunito", sans-serif;
     background: #fff;
     font-size: 16px;
 }
@@ -38,17 +41,20 @@ img {
 form { flex: 0 1 100%; }
 
 label, select, input {
+    font-family:"Nunito", sans-serif;
     border:none;
     font-size: 1em;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding-top: .5em;
+    padding-bottom: .5em;
 }
 
 select {
     background: #eee;
     padding-left: 1em;
-    padding-left: 2em;
-    padding-right: 25px;
+    padding-right: 2em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    text-align: center;
 }
 
 select:hover { background: #ececec; }
@@ -66,7 +72,7 @@ input[type=submit]:hover, input[type=button]:hover {
 
 
 hr {
-    border-top: 1px solid #eee;
+    border: 1px solid #eee;
   }
 
 #logo {
@@ -106,7 +112,7 @@ hr {
     display: flex;
     flex: 0 1 30%;
     margin-bottom: 10px; 
-    padding: .0em 1em .5em 0em;
+    padding: .0em .5em .5em 0em;
     align-items: center;
     align-content: center;
 }
@@ -115,8 +121,6 @@ hr {
     display: flex;
     flex: 1 1 50%;
     margin: 0 10px 10px 0;
-    padding: .5em 0em;
-    text-align: center;
 }
 
 .forma_stats submit {
@@ -166,7 +170,7 @@ hr {
 }
 
 .stat_nombre {
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .item {
@@ -176,8 +180,7 @@ hr {
 }
 
 .item_nombre {
-    font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .item_img {
