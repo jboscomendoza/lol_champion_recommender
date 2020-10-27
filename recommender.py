@@ -67,8 +67,10 @@ def get_role(nombre, tabla=CHAMP):
 def crear_custom(entrada):
     entrada = list(entrada.values())
     custom = [0 for i in range(26)]
+    # Stats de rasgos
     for i in entrada[0:3]:
         custom[CUSTOM_NAMES.index(i)] = 1
+    # Stats Bajo, Medio, Alto
     custom[0:6] = entrada[3:]
     custom = [float(i) for i in custom] 
     return custom

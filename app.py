@@ -13,6 +13,21 @@ app.config['SECRET_KEY'] = '7283hjbdscfzc78sdm3l3s8sbh23bds890fasdfz21p'
 LISTA_CHAMPS = rec.CHAMP_NAMES
 
 
+def limpia_stat(stat):
+    for k, v in stat.items():
+        if v == '3.0':
+            stat[k] = "Alto"
+        elif v == '2.0':
+            stat[k] = "Medio"
+        elif v == '1.0':
+            stat[k] = "Bajo"
+        elif isinstance(v, str):
+            v = v.replace("DType_", "")
+            v = v.replace("Rol_", "")
+            stat[k] = v
+    return stat
+
+
 @app.route("/recomendaciones/<string:campeon>/", methods=("GET", "POST"))
 def link_me(campeon):
     form = ChooseForm()
@@ -42,7 +57,7 @@ def mostrar_custom():
     stat = eval(request.args["stat"])
     custom = rec.crear_custom(stat)
     recomendaciones = rec.recoms("Custom", custom, cuantos=12)
-
+    stat = limpia_stat(stat)
     return render_template(
         "custom.html", 
         stat=stat,

@@ -5,7 +5,7 @@ from recommender import CHAMP_NAMES
 
 
 NUM_CHOICES = [(1.0, "Bajo"), (2.0, "Medio"), (3.0, "Alto")]
-LANE_CHOICES = ["Top", "Jungle", "Mid", "Bottom", "Support"]
+LANE_CHOICES = ["Top", "Mid", "Bottom", "Jungle", "Support"]
 DTYPE_CHOICES = [("DType_Magic", "Magic"), ("DType_Physical", "Physical")]
 ROL_CHOICES = [
     ("Rol_Artillery", "Artillery"), 
@@ -29,13 +29,13 @@ class ChooseForm(FlaskForm):
     submit = SubmitField("Mostrar recomendaciones")
 
 class StatForm(FlaskForm):
-    role = SelectField(u"Rol", choices=ROL_CHOICES)
-    lane = SelectField(u"Lane", choices=LANE_CHOICES)
-    dtyp = SelectField(u"Damage Type", choices=DTYPE_CHOICES)
-    dmge = SelectField(u"Damage", choices=NUM_CHOICES)
-    tghn = SelectField(u"Toughness", choices=NUM_CHOICES)
-    ctrl = SelectField(u"Control", choices=NUM_CHOICES)
-    mobl = SelectField(u"Mobility", choices=NUM_CHOICES)
-    util = SelectField(u"Utility", choices=NUM_CHOICES)
-    diff = SelectField(u"Difficulty", choices=NUM_CHOICES)
+    rol = SelectField(u"Rol", choices=ROL_CHOICES)
+    linea = SelectField(u"Lane", choices=LANE_CHOICES)
+    tipo = SelectField(u"Damage Type", choices=DTYPE_CHOICES)
+    damage = SelectField(u"Damage", choices=NUM_CHOICES, default=2.0)
+    toughness = SelectField(u"Toughness", choices=NUM_CHOICES, default=2.0)
+    control = SelectField(u"Control", choices=NUM_CHOICES, default=2.0)
+    mobility = SelectField(u"Mobility", choices=NUM_CHOICES, default=2.0)
+    utility = SelectField(u"Utility", choices=NUM_CHOICES, default=2.0)
+    difficulty = SelectField(u"Difficulty", choices=NUM_CHOICES, default=2.0)
     submit_stat = SubmitField("Mostrar recomendaciones")

@@ -7,8 +7,9 @@
 <div class="contenedor">
   <h1 class="cont_titulo"> Stats </h1>
   {% for k, v in stat.items() %}
-    <div class="item">
-      {{k}}: {{v}}
+    <div class="stat">
+      <p class="stat_nombre">{{k.capitalize() }}</p>
+      <p class?"stat_valor">{{v}}</p>
     </div>
   {% endfor %} 
 </div>
