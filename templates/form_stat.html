@@ -1,40 +1,32 @@
-<div class="contenedor">
-  <h3 class="cont_titulo">Elige una combinación de atributos</h3>
-  
-  <form id="forma_cont", action="" method="post" novalidate>
-    {{ form.hidden_tag() }} 
-    <div class="forma_stats">
-      {{ form_stat.rol.label }}
-      {{ form_stat.rol }}
-      {{ form_stat.linea.label }}
-      {{ form_stat.linea }}
-      {{ form_stat.tipo.label }}
-      {{ form_stat.tipo }}
-    </div>
+<h3 class="cont_titulo">Elige una combinación de atributos</h3>
 
-    <div class="forma_stats">
-      {{ form_stat.damage.label }}
-      {{ form_stat.damage }}
-      {{ form_stat.toughness.label }}
-      {{ form_stat.toughness }}
-      {{ form_stat.control.label }}
-      {{ form_stat.control }}
-    </div>
+<form action="" method="post" novalidate>
+{{ form.hidden_tag() }}
 
-    <div class="forma_stats">
-      {{ form_stat.mobility.label }}
-      {{ form_stat.mobility }} <br>
-      {{ form_stat.utility.label }}
-      {{ form_stat.utility }} <br>
-      {{ form_stat.difficulty.label }}
-      {{ form_stat.difficulty }}
-    </div>
+  <div class="grid-formstat">
+    {{ form_stat.rol.label }}
+    {{ form_stat.rol }}
+    {{ form_stat.linea.label }}
+    {{ form_stat.linea }}
+    {{ form_stat.tipo.label }}
+    {{ form_stat.tipo }}
+    {{ form_stat.damage.label }}
+    {{ form_stat.damage }}
+    {{ form_stat.toughness.label }}
+    {{ form_stat.toughness }}
+    {{ form_stat.control.label }}
+    {{ form_stat.control }}
+    {{ form_stat.mobility.label }}
+    {{ form_stat.mobility }} 
+    {{ form_stat.utility.label }}
+    {{ form_stat.utility }} 
+    {{ form_stat.difficulty.label }}
+    {{ form_stat.difficulty }}
+  </div>
 
-    <div>
-      <span style="color: red;">{{ error }}</span>
-      {{ form_stat.submit_stat() }}
-    </div>
+  <div id="formstat-submit">
+    <span style="color: red;">{{ error }}</span>
+    {{ form_stat.submit_stat() }}
+  </div>
 
-  </form>
-
-</div>
+</form>

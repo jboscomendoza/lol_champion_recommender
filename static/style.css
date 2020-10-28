@@ -11,6 +11,7 @@ body {
     max-width: 950px; 
     margin: auto; 
     background: #fff;
+    padding: 0 10px 0px 0;
 }
 
 a { color: #b466e9; }
@@ -38,7 +39,7 @@ img {
     margin: auto;
 }
 
-form { flex: 0 1 100%; }
+/*form { flex: 0 1 100%; }*/
 
 label, select, input {
     font-family:"Nunito", sans-serif;
@@ -206,9 +207,20 @@ hr {
     grid-template-columns: repeat(6, 1fr);
     column-gap: 10px;
     row-gap: 15px;
-    
   }
 
+.grid-formstat {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 15px;
+    row-gap: 5px;
+}
+
+#formstat-submit {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
 
 nav { background: lightgray; display: flex; align-items: center; padding: 0 0.5rem; }
 nav h1 { flex: auto; margin: 0; }

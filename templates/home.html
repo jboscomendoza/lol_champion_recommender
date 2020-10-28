@@ -3,16 +3,13 @@
 
 {% block content %}
 
-  <div class="contenedor">
-    <img id="logo" src={{url_for('static', filename = "lol_logo.png")}}>
-  </div>
+<div class="contenedor">
+  <img id="logo" src={{url_for('static', filename = "lol_logo.png")}}>
+</div>
 
 <hr>
-
 {% include "form_stat.html" %}
-
 <hr>
-
 {% include "form_choose.html" %}
 
 {% endblock %}
