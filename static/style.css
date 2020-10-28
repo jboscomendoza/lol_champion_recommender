@@ -155,12 +155,12 @@ hr {
     justify-content: center;
     flex-flow: row wrap;
     flex: 0 1 80%;
+    margin-top: 3%;
 }
 
 #stat_titulo {
     flex: 0 1 100%;
     text-align: center;
-    padding-top: 3%;
 }
 
 .stat {
@@ -192,6 +192,22 @@ hr {
     font-weight: 300;
     color: #888
 }
+
+.contenedor-footer {
+    display: flex;
+    flex: 0 0 100%;
+    text-align: center;
+    font-size: 0.65em;
+    margin-top:5em;
+}
+
+.grid-recomendaciones {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 10px;
+    row-gap: 15px;
+    
+  }
 
 
 nav { background: lightgray; display: flex; align-items: center; padding: 0 0.5rem; }
