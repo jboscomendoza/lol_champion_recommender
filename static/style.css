@@ -6,7 +6,7 @@ html {
     font-size: 16px;
 }
 
-@media (max-width:900px){
+@media (max-width:600px){
     html {
         font-family: "Nunito", sans-serif;
         background: #fff;
@@ -47,11 +47,13 @@ img {
 }
 
 label {
+    font-size: 1em;
     padding-top: .25em;
     padding-bottom: .25em;
 }
 
 select {
+    font-size: 1em;
     font-family:"Nunito", sans-serif;
     background: #eee;
     padding-top: .25em;
@@ -61,6 +63,7 @@ select {
 }
 
 input {
+    font-size: 1em;
     padding-top: .5em;
     padding-bottom: .5em;
     border:none;
@@ -68,6 +71,7 @@ input {
 
 input[type=submit], input[type=button] {
     color:white;
+    font-size: 1em;
     background-color: #412852;
     padding-left: 1.1em;
     padding-right: 1.1em;
@@ -118,7 +122,7 @@ hr { border: 1px solid #eee; }
     row-gap: 15px;
   }
 
-@media (max-width: 900px) {
+@media (max-width: 600px) {
     .grid-recomendaciones {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -134,7 +138,7 @@ hr { border: 1px solid #eee; }
     row-gap: 5px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 600px) {
     .grid-formstat {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -156,7 +160,7 @@ hr { border: 1px solid #eee; }
 }
 
 
-@media (max-width:900px) {
+@media (max-width:600px) {
     .grid-champ {
         display: grid;
         grid-template-columns: 40% 60%;
@@ -170,7 +174,7 @@ hr { border: 1px solid #eee; }
     column-gap: 5px;
 }
 
-@media (max-width:900px) {
+@media (max-width:600px) {
     .grid-stat {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
