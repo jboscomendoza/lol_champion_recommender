@@ -1,11 +1,13 @@
-<div class="contenedor">
-  <h3 class="cont_titulo">Elige un campeón</h3>
-  <div>
-    <form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
-        {{ form.choose_champ }} 
-        <span style="color: red; border:none">{{ error }}</span>
-        {{ form.submit() }}
-    </form>
+<h3 class="cont_titulo">Elige un campeón</h3>
+<form action="" method="post" novalidate>
+{{ form.hidden_tag() }}
+  <div class="grid-choose">
+    <div>
+      {{ form.choose_champ }} 
+    </div>
+    <div>
+    <span style="color: red; border:none">{{ error }}</span>
+      {{ form.submit() }}
+    </div>
   </div>
-</div>
+</form>

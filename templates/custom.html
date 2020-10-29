@@ -4,27 +4,29 @@
 
 {% block content %}
 
-  <div class="contenedor">
+  <div class="grid-champ">
     <div id="campeon_cont">
       <img id="campeon_img" src={{url_for('static', filename = "img/Custom.jpg")}}>
     </div>
 
-    <div id="stat_cont">
-      <h1 class="cont_titulo">Atributos seleccionados</h1>
+    <div>
+    <h1>Atributos seleccionados</h1>
+    <div class="grid-stat">
       {% for k, v in stat.items() %}
-        <div class="stat">
+        <div>
           <p class="stat_nombre">{{k.capitalize() }}</p>
           <p class?"stat_valor">{{v}}</p>
         </div>
       {% endfor %} 
     </div>
+    </div>
   </div>
 
-<hr>
+
 {% include "campeones_similares.html" %}
-<hr>
+
 {% include "form_stat.html" %}
-<hr>
+
 {% include "form_choose.html" %}
 
 {% endblock %}

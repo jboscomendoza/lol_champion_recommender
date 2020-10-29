@@ -4,30 +4,31 @@
 
 {% block content %}
 
-  <div class="contenedor"> 
-    <div id="campeon_cont">
+  <div class="grid-champ"> 
+    <div>
       <img id="campeon_img" src={{url_for('static', filename = "img/" + campeon + ".jpg")}}>
-      <h3 id="campeon_nombre"> {{ campeon }} </h3>
+      <h3> {{ campeon }} </h3>
       <p class="item_nombre">{{ get_role(campeon) }}</p>
     </div>
 
-    <div id="stat_cont">
-      <h1 id="stat_titulo">Estadísticas base</h1>
+    <div>
+    <h1>Estadísticas base</h1>
+    <div class="grid-stat">
       {% for stat in stats%}
-        <div class="stat">
+        <div>
           <p class="stat_nombre"> {{ stat[0] }} </p>
           <p class="stat_valor"> {{ stat[1] }} </p>
         </div>
       {%endfor%}
     </div>
+    </div>
   </div>
 
-<hr>
+
 {% include "campeones_similares.html" %}
-<hr>
+
 {% include "form_stat.html" %}
-<hr>
+
 {% include "form_choose.html" %}
-<hr>
 
 {% endblock %}
