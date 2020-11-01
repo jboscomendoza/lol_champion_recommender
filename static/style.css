@@ -109,10 +109,12 @@ hr { border: 1px solid #eee; }
 }
 
 .contenedor-footer {
-    display: flex;
-    text-align: center;
     font-size: 0.65rem;
     margin-top: 1.5rem;
+}
+
+.footer-texto {
+    text-align: center;
 }
 
 .grid-recomendaciones {
